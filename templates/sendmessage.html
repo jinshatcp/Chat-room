@@ -1,0 +1,28 @@
+<html>
+<head>
+	<h2>SEND MESSAGE </h2>
+</head>
+<form method="post" action="{{url_for('messageAction')}}">
+<body>
+<table>
+	<tr>
+		<td> RECIPIENT USERNAME </td>
+		<td><input type="text" name="r_username" id="r_username"/></td>
+	</tr>
+	<tr>
+		<td>SUBJECT</td>
+		<td><input type="text" name="subject" id="subject"/>
+
+	</tr>
+	<tr>
+		<td>TYPE YOUR MESSAGE HERE</td>
+		<td><textarea name=message rows="6" cols="15"></textarea></td>
+	</tr>
+	<tr>
+		<td>    </td>
+		<td>  <input type="submit" value="send message"/></td>
+	</tr>
+</table>
+</body>
+</form>
+</html>

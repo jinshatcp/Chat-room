@@ -1,0 +1,113 @@
+<html>
+<script src="static/jquery.min.js">
+</script>
+
+<script>
+	$(document).ready(function(){
+		$("#country").change(function() {
+			country_id=$("#country").val();
+			
+			$.ajax({
+				url:"/getstate",
+				data:{'country_id':country_id},
+				success:function(data){
+					$("#state").html(data);
+				}
+			})
+		});
+	});
+</script>
+<script>
+	$(document).ready(function(){
+		$("#username").change(function(){
+			username=$("#username").val();
+			$.ajax({
+				url:"/checkUsername",
+				data:{'username':username},
+				success:function(data){
+					if(data.check == 'exist')
+					{
+						alert('USERNAME ALREADY EXIST:PLEASE TRY DIFFERENT USERNAME');
+				
+						$("#username").val(' ');
+					}
+				}
+
+			});
+		});
+	});
+</script>
+	<head>
+		<h2><b>REGISTER</h2>
+	</head>
+	<body>
+		<form method="post" action="{{ url_for('registerAction') }}">
+		
+		<table>
+			<tr>
+				<td>Name</td>
+				<td><input type="text" name="name" id="name"/></td>
+			</tr>
+			<tr>
+				<td>Gender</td>
+				<td>
+					<input type="radio" name="gender" value="Male"/>Male
+					<input type="radio" name="gender" value="Female"/>Female
+				</td>
+			</tr>
+			<tr>
+				<td>Date of birth</td>
+				<td><input type="date" name="dob" id="dob"/></td>
+			</tr>
+			<tr>
+				<td>Address</td>
+				<td><textarea name="address" rows="4" cols="10" id="address"></textarea></td>
+			</tr>
+			<tr>
+			<td>country</td>
+			<td><select name="country" id="country">
+				<option value= " ">__select__</option>
+				
+				{% for c in data %} 
+					<option value="{{c.country_id}}">{{c.country}}</option>
+				{% endfor %}
+				</select>
+			</td>
+				
+		</tr>
+		<tr>
+			<td>state</td>
+			<td>
+				<select name = "state" id="state">
+				<option value= " ">__select__</option>
+				</select>
+			</td>
+
+		</tr>
+			
+			
+			<tr>
+				<td>Phone</td>
+				<td><input type="text" name="phone" id="phone"/></td>
+			</tr>
+			<tr>
+				<td>Username</td>
+				<td><input type="text" name="username" id="username"/>@mail.com</td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><input type="password" name="password" id="password"/></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Register"/></td>
+			</tr>
+		</table>
+		</form>
+	</body>
+	{% if msg %}
+		<script>
+			alert('{{msg}}');
+		</script>
+	{% endif %}
+</html>

@@ -1,0 +1,21 @@
+<html>
+<head><h2>forward</h2></head>
+<form method="post" action="{{url_for('forwardAction')}}">
+<body>
+<table> 
+	<tr><td>share to</td><td><input type="text" name="reciever" id="reciever"/></td></tr>
+	{% for v in data%}
+	<tr><td>subject</td><td><input type="text" name= "subject" value="forwarded message"/></td></tr>
+	<tr> <td>message</td><td><textarea name="message" rows="6" cols="15">{{v.message}}</textarea></td></tr>
+	{% endfor %}
+	<tr><td></td><td><input type="submit" value="send"/></td></tr>
+</table>
+</body>
+
+{% if msg %}
+	<script>
+		alert('{{msg}}');
+	</script>
+{% endif %}
+
+</html>

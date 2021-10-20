@@ -1,0 +1,16 @@
+<html>
+<head>
+	<h2> HOME </h2>
+</head>
+<body>
+	<li><a href="{{url_for('sendMessage')}}">SEND A NEW MESSAGE</a></li>
+	<li><a href="{{url_for('recievedMessage')}}">INBOX</a></li>
+	<li><a href="{{url_for('outbox')}}">OUTBOX</a></li>
+</body>
+{% if msg %}
+		<script>
+			alert('{{msg}}');
+		</script>
+	{% endif %}
+</html>
+	

@@ -1,0 +1,23 @@
+<html>
+
+
+<head><h2>OUTBOX</h2></head>
+
+<body>
+<table>
+	
+	{% for v in data %}
+	
+	<tr><td> to </td><td>{{v.reciever}}</td></tr>
+	<tr><td> date</td><td>{{v.date}}</td></tr>
+	<tr><td>time</td><td>{{v.time}}</td></tr>
+	<tr><td>Subject</td><td>{{v.subject}}</td></tr>
+	<tr><td>message</td><td>{{v.message}}</td></tr>
+	<tr><td><a href="{{url_for('deletemessage',id=v.id,rec=1)}}">delete this message</a></td></tr>
+	<tr><td>......................</td><td>............................</td></tr>
+
+	{% endfor %}
+</table>
+</body>
+
+</html>

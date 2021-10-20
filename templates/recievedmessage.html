@@ -1,0 +1,30 @@
+<html>
+
+
+<head><h2>INBOX</h2></head>
+
+<body>
+<table>
+	
+	{% for v in data %}
+	<input type="hidden" name="sender" value="{{v.from}}"/>
+	<tr><td> FROM </td><td>{{v.source}}</td></tr>
+	<tr><td> date</td><td>{{v.date}}</td></tr>
+	<tr><td>time</td><td>{{v.time}}</td></tr>
+	<tr><td>Subject</td><td>{{v.subject}}</td></tr>
+	<tr><td>message</td><td>{{v.message}}</td></tr>
+	<tr><td>do you want to reply..?</td><td><a href="{{url_for('reply',id=v.id)}}">yes</a></td></tr>
+	<tr><td>forward this message</td><td><a href="{{url_for('forward',id=v.id)}}">send to</a></td></tr>
+	<tr><td><a href="{{url_for('deletemessage',id=v.id,rec=0)}}">delete this message</a></td></tr>
+		<tr><td>...........................</td><td>..............</td></tr>
+	{% endfor %}
+</table>
+
+
+		
+		
+		
+
+</body>
+
+</html>
